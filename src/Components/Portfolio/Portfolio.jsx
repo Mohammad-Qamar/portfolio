@@ -124,7 +124,7 @@ const Portfolio = () => {
                 <FaGithub />
               </a>
             </div>
-            <a href="/Resume/Qamar's_Resume.pdf" download>
+            <a href="Resume/Qamar's_Resume.pdf" download>
               <button className="download-resume">
                 <FaDownload /> Download Resume
               </button>
