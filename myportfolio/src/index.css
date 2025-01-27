@@ -1,0 +1,128 @@
+/* index.css */
+
+/* Define the color variables */
+:root {
+  --black: #121212;
+  --white: #E0E0E0;
+  --link-color: #6c757d;
+  --orange: #e78c1c;
+}
+
+/* General body styles */
+body {
+  font-family: "Quicksand-Light";
+  background-color: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Links */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: var(--orange);
+}
+
+/* Portfolio Navbar Styles */
+.portfolio-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--black);
+  padding: 10px;
+  z-index: 100;
+  transform: translateY(-100%);
+  transition: transform 0.5s ease;
+  height: 60px; /* Adjust navbar height */
+}
+
+.portfolio-navbar.open {
+  transform: translateY(0);
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-title {
+  color: var(--white);
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.menu-toggle {
+  display: block;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  margin-left: 20px;
+}
+
+.navbar-button {
+  color: var(--white);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.navbar-links.show {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .portfolio-navbar {
+    height: 50px;
+    padding: 5px;
+  }
+
+  .navbar-title {
+    font-size: 1.2rem;
+  }
+
+  .menu-toggle {
+    font-size: 2.5rem;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 100%;
+    background-color: var(--black);
+    padding: 10px;
+  }
+
+  .navbar-links.show {
+    display: flex;
+  }
+
+  .navbar-links li {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}
+
+/* Ensure content isn't hidden behind the navbar */
+.portfolio-content {
+  padding-top: 70px; /* Adjust padding to make space for the navbar */
+}
