@@ -75,7 +75,7 @@ const Portfolio = () => {
             <h2 className="section-title">About </h2>
             <p className="section-description">
               "I am a Full Stack Developer with expertise in Java, C++, React,
-              and Spring Boot. I thrive on creating innovative software
+              and Spring Boot Html Css js etc. I thrive on creating innovative software
               solutions to solve real-world problems and contribute to
               meaningful projects. My strong technical foundation and
               problem-solving mindset empower me to deliver robust and scalable
