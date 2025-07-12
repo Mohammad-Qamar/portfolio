@@ -5,6 +5,31 @@
   box-sizing: border-box;
 }
 
+/* Animations */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 /* Navbar Styles */
 .portfolio-navbar {
   position: fixed;
@@ -21,6 +46,27 @@
 
 .portfolio-navbar.open {
   transform: translateY(0);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-title {
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--white);
+  cursor: pointer;
 }
 
 .navbar-links {
@@ -37,6 +83,12 @@
   background: none;
   border: none;
   cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar-button:hover {
+  color: #f7b42c;
 }
 
 .navbar-links.show {
@@ -44,27 +96,13 @@
 }
 
 @media (max-width: 768px) {
-  .portfolio-navbar {
-    height: 50px;
-    padding: 5px;
-  }
-
-  .navbar-title {
-    font-size: 1.2rem;
-  }
-
-  .menu-toggle {
-    font-size: 1.8rem;
-    padding: 5px;
-  }
-
   .navbar-links {
     display: none;
     flex-direction: column;
-    margin-top: 10px;
     width: 100%;
     background-color: var(--black);
     padding: 10px;
+    animation: fadeInUp 0.4s ease-in-out;
   }
 
   .navbar-links.show {
@@ -72,43 +110,47 @@
   }
 
   .navbar-links li {
-    margin-left: 0;
-    margin-bottom: 10px;
-    text-align: center; /* Center-align links */
-  }
-
-  .navbar-button {
-    font-size: 0.9rem;
+    margin: 10px 0;
+    text-align: center;
   }
 }
 
 /* Portfolio Section Styles */
 .portfolio-content {
-  padding-top: 80px; /* Reduce space for smaller screens */
+  padding-top: 80px;
+  animation: fadeInUp 0.8s ease-in-out;
 }
 
+/* Card Style with Glass Effect */
 .card {
-  margin: 10px 15px;
-  max-width: 100%; /* Adjust width for smaller screens */
-  padding: 20px;
-  background-color: var(--black);
-  border-radius: 10px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  color: #ffffff;
-  border: 1px solid #333;
+  margin: 15px;
+  padding: 25px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(247, 180, 44, 0.1);
+  color: #fff;
+  animation: bounceIn 0.6s ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(247, 180, 44, 0.2);
 }
 
 .profile-image {
-  width: 120px; /* Smaller profile image */
-  height: 120px;
-  margin: 0 auto;
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 15px;
   display: block;
   border-radius: 50%;
   object-fit: cover;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
 .section-title {
-  font-size: 1.8rem; /* Adjust title size */
+  font-size: 1.8rem;
   margin-bottom: 15px;
   color: #f7b42c;
   text-align: center;
@@ -116,29 +158,50 @@
 
 .section-description,
 .card ul {
-  font-size: 0.9rem; /* Smaller font size */
-  line-height: 1.4;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
 }
 
 .social-icons a {
   margin: 0 10px;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  color: white;
+  transition: transform 0.2s ease, color 0.3s ease;
 }
 
+.social-icons a:hover {
+  transform: scale(1.2);
+  color: #f7b42c;
+}
+
+/* Resume Download Button */
 .download-resume {
-  font-size: 0.9rem;
-  padding: 8px 12px;
-  display: block;
+  font-size: 1rem;
+  padding: 10px 15px;
   margin: 15px auto;
-  background-color: #f7b42c;
-  color: #000;
+  display: block;
+  background: linear-gradient(90deg, #f7b42c, #ffcc70);
+  color: black;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(247, 180, 44, 0.5);
 }
 
-/* Adjusting project items for smaller screens */
+.download-resume:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 204, 112, 0.7);
+}
+
+/* Project Section */
 .project-list {
   display: flex;
   flex-direction: column;
@@ -147,16 +210,27 @@
 
 .project-item {
   background-color: #222;
-  padding: 15px;
+  padding: 20px;
   border-radius: 8px;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.project-item:hover {
+  transform: translateY(-5px);
+  background-color: #333;
 }
 
 .project-item a {
   color: #f7b42c;
   text-decoration: none;
+  font-weight: bold;
+}
+
+.project-item a:hover {
+  text-decoration: underline;
 }
 
 /* Contact Section */
@@ -166,24 +240,12 @@
 }
 
 #contact p {
-  font-size: 0.9rem;
+  font-size: 1rem;
+  margin: 5px 0;
 }
 
-/* Media Queries for Extra Small Screens (Max Width: 480px) */
+/* Responsive Tweaks */
 @media (max-width: 480px) {
-  .portfolio-navbar {
-    padding: 5px;
-    height: 45px;
-  }
-
-  .menu-toggle {
-    font-size: 1.5rem;
-  }
-
-  .card {
-    padding: 15px;
-  }
-
   .profile-image {
     width: 100px;
     height: 100px;
@@ -193,86 +255,53 @@
     font-size: 1.5rem;
   }
 
-  .navbar-button {
-    font-size: 0.8rem;
+  .card {
+    padding: 18px;
   }
 
   .download-resume {
-    font-size: 0.8rem;
-    padding: 6px 10px;
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .navbar-button {
+    font-size: 0.9rem;
   }
 }
 
-
-/* Media Queries for Large Screens (Min Width: 1024px) */
 @media (min-width: 1024px) {
-  /* Add margins on both sides to prevent content from stretching */
   body {
     margin: 0 auto;
-    max-width: 1200px; /* Center the content with a max width */
+    max-width: 1200px;
   }
 
-  /* Navbar adjustments */
   .portfolio-navbar {
-    padding: 15px 30px; /* Increase padding for a spacious look */
-    height: 70px; /* Slightly increase height */
+    padding: 15px 30px;
+    height: 70px;
   }
 
   .navbar-links li {
-    margin-left: 30px; /* Add more spacing between links */
+    margin-left: 30px;
   }
 
-  .navbar-title {
-    font-size: 1.8rem; /* Larger title font size */
-  }
-
-  .navbar-button {
-    font-size: 1rem; /* Slightly larger button font */
-  }
-
-  /* Portfolio Section */
   .portfolio-content {
-    padding-top: 100px; /* Increase padding to align with the larger navbar */
+    padding-top: 100px;
   }
 
   .card {
-    margin: 20px 30px; /* Add more margin between cards */
-    padding: 30px; /* Increase padding for a better layout */
-    font-size: 1rem; /* Larger font size for readability */
-  }
-
-  .profile-image {
-    width: 150px; /* Larger profile image */
-    height: 150px;
+    margin: 20px 30px;
+    padding: 35px;
   }
 
   .section-title {
-    font-size: 2.2rem; /* Larger section title */
-  }
-
-  .section-description,
-  .card ul {
-    font-size: 1rem; /* Larger text for better readability */
-    line-height: 1.6;
+    font-size: 2.2rem;
   }
 
   .social-icons a {
-    font-size: 1.5rem; /* Larger icons for better visibility */
+    font-size: 1.5rem;
   }
 
   .download-resume {
-    font-size: 1rem; /* Larger button text */
-    padding: 10px 15px; /* Increase button size */
-  }
-
-  /* Project Section */
-  .project-item {
-    padding: 20px; /* Add padding for better spacing */
-    font-size: 1rem; /* Larger project item text */
-  }
-
-  /* Contact Section */
-  #contact p {
-    font-size: 1rem; /* Adjust contact text size */
+    font-size: 1.1rem;
   }
 }

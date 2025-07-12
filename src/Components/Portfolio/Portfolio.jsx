@@ -8,10 +8,11 @@ const Portfolio = () => {
   const aboutRef = useRef(null);
   const qualificationsRef = useRef(null);
   const projectsRef = useRef(null);
+  const experienceRef = useRef(null);
+  const certificationsRef = useRef(null);
   const contactRef = useRef(null);
 
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const scrollToSection = (ref) => {
@@ -28,21 +29,19 @@ const Portfolio = () => {
         transition={{ duration: 0.5, type: "spring", stiffness: 50 }}
       >
         <div className="navbar-content">
-          {/* Title is only visible on larger screens */}
           <h1 className="navbar-title">Qamar's Portfolio</h1>
-
-          {/* Menu toggle button */}
           <button className="menu-toggle" onClick={toggleMenu}>
             ☰
           </button>
         </div>
 
-        {/* Navbar links (hidden on small screens, visible when toggled) */}
         <ul className={`navbar-links ${isOpen ? "show" : ""}`}>
           {[
             { label: "About Me", ref: aboutRef },
             { label: "Qualifications", ref: qualificationsRef },
+            { label: "Experience", ref: experienceRef },
             { label: "Projects", ref: projectsRef },
+            { label: "Certifications", ref: certificationsRef },
             { label: "Contact", ref: contactRef },
           ].map(({ label, ref }, index) => (
             <li key={index}>
@@ -72,41 +71,39 @@ const Portfolio = () => {
             <div className="profile-image-container">
               <img src={Mypic} alt="Profile" className="profile-image" />
             </div>
-            <h2 className="section-title">About </h2>
+            <h2 className="section-title">About</h2>
             <p className="section-description">
-              "I am a Full Stack Developer with expertise in Java, C++, React,
-              and Spring Boot Html Css js etc. I thrive on creating innovative software
-              solutions to solve real-world problems and contribute to
-              meaningful projects. My strong technical foundation and
-              problem-solving mindset empower me to deliver robust and scalable
-              applications."
+              I'm a passionate software developer trained at CDAC Acts, looking
+              for full-time opportunities in software development or
+              networking.I'm excited to apply what I've learned to real-world
+              projects. I'm eager to join a team where I can grow, contribute,
+              and make a meaningful impact while continuing to learn every day
             </p>
             <div className="skills-tools">
               <div className="skills">
                 <h3>Skills</h3>
                 <ul>
-                  <li>
-                    Programming Languages: Java 8, C 98, C++, JavaScript, HTML5,
-                    CSS, Shell Script
-                  </li>
-                  <li>Frontend Development: ReactJS, ASP.NET</li>
-                  <li>Backend Development: Spring Boot, RESTful APIs</li>
-                  <li>Database Management: MySQL</li>
+                  <li>Languages: Java, C++, C#, Shell Script</li>
+                  <li>Frontend: ReactJS, HTML, CSS, JS, Bootstrap</li>
+                  <li>Backend: Spring Boot, RESTful APIs</li>
+                  <li>Database: MySQL</li>
+                  <li>Frameworks: ReactJS, Spring Boot</li>
+                  <li>Version Control: Git, GitHub</li>
+                  <li>Learning... Cloud And Networking Skills</li>
                 </ul>
               </div>
               <div className="tools-platforms">
                 <h3>Tools & Platforms</h3>
                 <ul>
                   <li>
-                    Development Tools: Visual Studio Code, Eclipse, Git, Postman
+                    Tools: VS Code, Eclipse, Git, Postman ,Cisco packet tracer
                   </li>
                   <li>Platforms: Windows, Linux</li>
                 </ul>
               </div>
             </div>
-
             <div className="social-icons">
-              <a href="mailto:qamaransari63@email.com">
+              <a href="mailto:qamaransari623@email.com">
                 <FaEnvelope />
               </a>
               <a
@@ -124,7 +121,7 @@ const Portfolio = () => {
                 <FaGithub />
               </a>
             </div>
-            <a href="Resume/Qamar's_Resume.pdf" download>
+            <a href="Resume/Mohammad Qamar Resume.pdf" download>
               <button className="download-resume">
                 <FaDownload /> Download Resume
               </button>
@@ -144,13 +141,36 @@ const Portfolio = () => {
           <div className="card">
             <h2 className="section-title">Qualifications</h2>
             <ul>
-              {[
-                "Post Graduate Diploma in Advanced Computing from CDAC Bangalore",
-                "Bachelor's Degree in Civil Engineering from RTU Kota Rajasthan",
-                "Diploma in Civil Engineering from CPU Kota Rajasthan",
-              ].map((qualification) => (
-                <li key={qualification}>{qualification}</li>
-              ))}
+              <li>
+                Post Graduate Diploma in Advanced Computing - CDAC Bangalore
+              </li>
+              <li>B.Tech in Civil Engineering - RTU, Kota</li>
+            </ul>
+          </div>
+        </motion.section>
+
+        {/* Experience Section */}
+        <motion.section
+          ref={experienceRef}
+          id="experience"
+          className="portfolio-section"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <div className="card">
+            <h2 className="section-title">Experience</h2>
+            <ul>
+              <li>
+                <strong>
+                  Frontend Software Engineering Intern [Part Time]
+                </strong>
+                <br />
+                <em>Frantiger Consulting, Bangalore — Apr 2024 – Sep 2024</em>
+                <br />
+                - Built responsive web interfaces using React.js, HTML, and CSS.
+                <br />- Collaborated with the team using GitHub and VS Code.
+              </li>
             </ul>
           </div>
         </motion.section>
@@ -169,25 +189,28 @@ const Portfolio = () => {
             <div className="project-list">
               {[
                 {
-                  name: "Real-Time Chat Application",
-                  Technologies: "ReactJS, Spring Boot, WebSockets",
+                  name: "ECommerce ClothKings Website",
                   description:
-                    "Developed a real-time chat application where multiple users can chat personally or in groups. Implemented WebSockets for seamless backend communication to ensure real-time updates.",
-                  link: "#",
+                    "A fully responsive and visually appealing e-commerce website built with React.js. Focused on UI/UX and smooth frontend interactions.",
+                  link: "https://mohammad-qamar.github.io/ecommerce/",
+                },
+                {
+                  name: "Real-Time Chat App",
+                  description:
+                    "Real-time chat app using React and WebSockets. Enables real-time communication between users.",
+                  link: "https://github.com/Mohammad-Qamar/Real-Time-Chat-App",
                 },
                 {
                   name: "Student Attendance Management System",
-                  Technologies: "ReactJS, Spring Boot, MySQL",
                   description:
-                    "A project developed during training at CDAC Bangalore using React, Spring Boot, and MySQL.",
+                    "Developed during CDAC training to track attendance, generate reports, and handle authentication.",
                   link: "https://github.com/Mohammad-Qamar/Project",
                 },
                 {
-                  name: "To-do List Application",
-                  Technologies: "HTML, CSS, ReactJS, JavaScript",
+                  name: "Advanced To-do List",
                   description:
-                    "Developed a task management web application using HTML, CSS, React, and JavaScript. Helps users prioritize tasks and plan their schedules effectively.",
-                  link: "https://github.com/Mohammad-Qamar/advance-todo-list",
+                    "CRUD-based task management tool with priority control and responsive layout.",
+                  link: "https://mohammad-qamar.github.io/advance-todo-list/",
                 },
               ].map(({ name, description, link }, index) => (
                 <motion.div
@@ -198,10 +221,35 @@ const Portfolio = () => {
                 >
                   <h3>{name}</h3>
                   <p>{description}</p>
-                  {link && <a href={link}>View Project</a>}
+                  {link && (
+                    <a href={link} target="_blank" rel="noreferrer">
+                      View Project
+                    </a>
+                  )}
                 </motion.div>
               ))}
             </div>
+          </div>
+        </motion.section>
+
+        {/* Certifications Section */}
+        <motion.section
+          ref={certificationsRef}
+          id="certifications"
+          className="portfolio-section"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <div className="card">
+            <h2 className="section-title">Certifications</h2>
+            <ul>
+              <li>CCNA DevNet – Cisco NetAcad</li>
+              <li>Introduction to Cybersecurity – Cisco NetAcad</li>
+              <li>TCS iON Career Edge – Young Professional</li>
+              <li>Google – Introduction to Generative AI</li>
+              <li>Sunbeam Pre CAT – Core CS, OOP, Networking</li>
+            </ul>
           </div>
         </motion.section>
 
@@ -216,7 +264,7 @@ const Portfolio = () => {
         >
           <div className="card">
             <h2 className="section-title">Contact</h2>
-            <p>Email: qamaransari63@email.com</p>
+            <p>Email: qamaransari623@email.com</p>
             <p>Phone: +91 8278635098</p>
           </div>
         </motion.section>
